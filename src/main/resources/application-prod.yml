@@ -1,0 +1,20 @@
+# application-prod.yml
+spring:
+  datasource:
+    # 配置数据源类型
+    type: com.zaxxer.hikari.HikariDataSource
+    # 配置连接数据库信息
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://43.139.154.220:3306/bms_boot?characterEncoding=utf8&useSSL=false
+    username: xiaobaitiao123
+    password: hj@12342az
+server:
+  port: 8889 #配置后端接口的端口号
+  servlet: #配置后端请求的根路径  http://43.139.154.220:8889/api
+    context-path: "/api"
+#jwt config
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mall-jwt-test #jwt加解密使用的密钥
+  expiration: 3600000 #JWT的超时时间
+  tokenHead: Bearer #JWT负载中拿到的开头

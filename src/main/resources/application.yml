@@ -1,0 +1,27 @@
+spring:
+  # 配置数据源信息
+  application:
+    #应用的名称
+    name: BookManageSystem
+  profiles:
+    active: 'dev' # 指定开发配置文件
+    # 指定返回给前端的时区和时间的格式化模式
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+# 配置MyBatisPlus日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #在映射实体类或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      # 配置MyBatis-Plus操作表的默认前缀
+      table-prefix: t_
+      # 配置MyBatis-Plus的主键策略
+      #      id-type: assign_id
+      # 配置实体类的扫描包路径 注入容器
+  type-aliases-package: com.book.backend.pojo
+
+

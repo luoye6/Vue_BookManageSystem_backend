@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.backend.mapper.BooksMapper">
+
+    <resultMap id="BaseResultMap" type="com.book.backend.pojo.Books">
+            <id property="bookId" column="book_id" jdbcType="INTEGER"/>
+            <result property="bookNumber" column="book_number" jdbcType="BIGINT"/>
+            <result property="bookName" column="book_name" jdbcType="VARCHAR"/>
+            <result property="bookAuthor" column="book_author" jdbcType="VARCHAR"/>
+            <result property="bookLibrary" column="book_library" jdbcType="VARCHAR"/>
+            <result property="bookType" column="book_type" jdbcType="VARCHAR"/>
+            <result property="bookLocation" column="book_location" jdbcType="VARCHAR"/>
+            <result property="bookStatus" column="book_status" jdbcType="VARCHAR"/>
+            <result property="bookDescription" column="book_description" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        book_id,book_number,book_name,
+        book_author,book_library,book_type,
+        book_location,book_status,book_description,
+        create_time,update_time
+    </sql>
+</mapper>
