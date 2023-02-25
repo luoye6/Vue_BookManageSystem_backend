@@ -5,12 +5,12 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     # 配置连接数据库信息
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://43.139.154.220:3306/bms_boot?characterEncoding=utf8&useSSL=false
-    username: xiaobaitiao123
-    password: hj@12342az
+    url: jdbc:mysql://xxxxxx远程服务器地址:3306/bms_boot?characterEncoding=utf8&useSSL=false
+    username: xxxxxx
+    password: xxxxx
 server:
   port: 8889 #配置后端接口的端口号
-  servlet: #配置后端请求的根路径  http://43.139.154.220:8889/api
+  servlet: #配置后端请求的根路径 
     context-path: "/api"
 #jwt config
 jwt:
