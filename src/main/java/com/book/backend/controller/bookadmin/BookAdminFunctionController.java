@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.book.backend.common.BasePage;
 import com.book.backend.common.Constant;
 import com.book.backend.common.R;
+import com.book.backend.common.exception.CommonError;
+import com.book.backend.common.exception.VueBookException;
 import com.book.backend.pojo.*;
 import com.book.backend.pojo.dto.BooksBorrowDTO;
 import com.book.backend.pojo.dto.ViolationDTO;
@@ -83,7 +85,7 @@ public class BookAdminFunctionController {
         queryWrapper1.eq(Books::getBookNumber, bookNumber);
         Books book = booksService.getOne(queryWrapper1);
         if ((book == null) || (book.getBookStatus().equals(Constant.BOOKDISABLE))) {
-            return R.error("借阅图书失败");
+            VueBookException.cast(CommonError.QUERY_NULL);
         }
 
         // 规则编号
