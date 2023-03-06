@@ -770,6 +770,7 @@ public class AdminFunctionController {
      * @param bookAdmins 图书管理员
      * @return R<String>
      */
+
     @PutMapping("update_bookadmin")
     public R<String> updateBookAdmin(@RequestBody BookAdmins bookAdmins){
         String password = bookAdmins.getPassword();

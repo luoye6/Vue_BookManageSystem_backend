@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.book.backend.common.BasePage;
 import com.book.backend.common.R;
+import com.book.backend.common.exception.CommonError;
+import com.book.backend.common.exception.VueBookException;
 import com.book.backend.pojo.*;
 import com.book.backend.pojo.dto.CommentDTO;
 import com.book.backend.pojo.dto.ViolationDTO;
@@ -164,7 +166,7 @@ public class UserFunctionController {
         R<Users> result = new R<>();
         // 判断userId是否为null
         if (userId == null) {
-            return R.error("获取用户信息失败");
+            VueBookException.cast(CommonError.USER_NULL);
         }
         queryWrapper.eq(Users::getUserId, userId);
         Users users = usersService.getOne(queryWrapper);
