@@ -18,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+application-prod.yml
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +32,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/resources/banner.txt

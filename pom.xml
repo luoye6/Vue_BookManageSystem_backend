@@ -70,8 +70,18 @@
             <artifactId>hutool-all</artifactId>
             <version>5.8.11</version>
         </dependency>
-
-
+<!--knife4j依赖导入-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup  Java爬虫-->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.15.3</version>
+        </dependency>
     </dependencies>
 
     <build>

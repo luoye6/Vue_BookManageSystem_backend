@@ -1,4 +1,6 @@
 package com.book.backend.utils;
+import cn.hutool.core.util.RandomUtil;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
@@ -56,7 +58,13 @@ public class RandomNameUtils {
         }
         return ret.toString();
     }
-
+    public static String getRandomLocation(){
+        int i=(int)Math.round(Math.random()*26);
+        int j=(int)'A'+i;
+        char ch=(char)j;
+        String s = RandomUtil.randomNumbers(6);
+        return ch+s;
+    }
     /**
      * 2021年姓排行100
      */

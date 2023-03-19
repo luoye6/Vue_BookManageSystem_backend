@@ -6,7 +6,9 @@ import java.util.Random;
  * @author 赵天宇
  */
 public class NumberUtil {
-
+    public static Integer getLibraryInt(){
+        return new Random().nextInt(3);
+    }
     public static Integer getStatusInt() {
         //[0 - 5)
         return new Random().nextInt(5);
@@ -66,7 +68,8 @@ public class NumberUtil {
 
     public static void main(String[] args) {
         for (int i = 0; i < 1000; i++) {
-            System.out.println(randomLong());
+            Integer libraryInt = getLibraryInt();
+            System.out.println(libraryInt);
         }
     }
 
