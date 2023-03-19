@@ -24,4 +24,20 @@ mybatis-plus:
       # 配置实体类的扫描包路径 注入容器
   type-aliases-package: com.book.backend.pojo
 
-
+# knife4j接口文档配置
+knife4j:
+  enable: true
+  openapi:
+    title: "图书管理系统后台接口文档"
+    description: "vue_book_backend"
+    # aaa"
+    version: "1.0"
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://abc.xiaobaitiao.club
+    group:
+      test1:
+        group-name: default
+        api-rule: package
+        api-rule-resources:
+          - com.book.backend.controller
