@@ -17,6 +17,7 @@ import com.book.backend.service.*;
 import com.book.backend.utils.JwtKit;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
@@ -55,6 +56,7 @@ public class BookAdminFunctionController {
      * @return R
      */
     @PostMapping("borrow_book")
+    @Transactional
     public R borrowBookByCardNumberAndBookNumber(@RequestBody BooksBorrowDTO booksBorrowDTO) {
         /**
          *  1.接受前端请求中的参数(借阅证号、图书编号、借阅时间)
@@ -205,6 +207,7 @@ public class BookAdminFunctionController {
      * @return R
      */
     @PostMapping("return_book")
+    @Transactional
     public R returnBook(@RequestBody Violation violation) {
         /**
          * 1.获取归还日期和违章信息和图书编号

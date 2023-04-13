@@ -18,6 +18,7 @@ import com.book.backend.utils.NumberUtil;
 import com.book.backend.utils.RandomNameUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -113,6 +114,7 @@ public class AdminFunctionController {
      * @return R
      */
     @PostMapping("add_book")
+    @Transactional
     public R addBook(@RequestBody BookDTO bookDTO) {
         /**
          * 1.获取图书名称，图书作者，图书馆名称，书籍类别的id,书籍位置，书籍状态，书籍介绍
@@ -154,6 +156,7 @@ public class AdminFunctionController {
      * @return R
      */
     @GetMapping("delete_book/{bookId}")
+    @Transactional
     public R deleteBookByBookId(@PathVariable("bookId") Integer bookId) {
         /**
          * 1.先根据图书id查询是否有这本图书，如果图书不存在直接返回
@@ -333,6 +336,7 @@ public class AdminFunctionController {
      * @return R
      */
     @GetMapping("delete_booktype/{typeId}")
+    @Transactional
     public R deleteBookTypeByTypeId(@PathVariable("typeId") Integer typeId) {
         /**
          * 1.先根据typeId查询是否有此书籍类别
@@ -520,6 +524,7 @@ public class AdminFunctionController {
      * @return R
      */
     @DeleteMapping("delete_statement/{userId}")
+    @Transactional
     public R deleteStatementByUserId(@PathVariable("userId") Integer userId) {
         /**
          * 1.根据userId查询是否有该用户
@@ -641,6 +646,7 @@ public class AdminFunctionController {
      * @return R
      */
     @PutMapping("update_rule")
+    @Transactional
     public R updateRule(@RequestBody BookRuleDTO bookRuleDTO){
         /**
          * 1.接受限制的图书馆数组，将数组变为字符串
@@ -669,6 +675,7 @@ public class AdminFunctionController {
      * @return R
      */
     @DeleteMapping("delete_rule/{ruleId}")
+    @Transactional
     public R deleteRule(@PathVariable("ruleId") Integer ruleId){
         /**
          * 1.根据规则id查询是否有该规则
