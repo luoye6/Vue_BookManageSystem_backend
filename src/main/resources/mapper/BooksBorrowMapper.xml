@@ -7,7 +7,7 @@
     <resultMap id="BaseResultMap" type="com.book.backend.pojo.BooksBorrow">
             <id property="borrowId" column="borrow_id" jdbcType="INTEGER"/>
             <result property="cardNumber" column="card_number" jdbcType="BIGINT"/>
-            <result property="bookNumber" column="book_number" jdbcType="INTEGER"/>
+            <result property="bookNumber" column="book_number" jdbcType="BIGINT"/>
             <result property="borrowDate" column="borrow_date" jdbcType="TIMESTAMP"/>
             <result property="closeDate" column="close_date" jdbcType="TIMESTAMP"/>
             <result property="returnDate" column="return_date" jdbcType="TIMESTAMP"/>

@@ -31,7 +31,7 @@ public class Violation implements Serializable {
     /**
      * 图书编号 图书唯一标识
      */
-    private Integer bookNumber;
+    private Long bookNumber;
 
     /**
      * 借阅日期

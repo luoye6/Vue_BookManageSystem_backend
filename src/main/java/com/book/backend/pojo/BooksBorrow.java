@@ -31,7 +31,7 @@ public class BooksBorrow implements Serializable {
     /**
      * 图书编号 图书唯一标识
      */
-    private Integer bookNumber;
+    private Long bookNumber;
 
     /**
      * 借阅日期
@@ -69,7 +69,7 @@ public class BooksBorrow implements Serializable {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
-    public BooksBorrow(Integer borrowId, Long cardNumber, Integer bookNumber, LocalDateTime borrowDate, LocalDateTime closeDate, LocalDateTime returnDate, String createTime, String updateTime) {
+    public BooksBorrow(Integer borrowId, Long cardNumber, Long bookNumber, LocalDateTime borrowDate, LocalDateTime closeDate, LocalDateTime returnDate, String createTime, String updateTime) {
         this.borrowId = borrowId;
         this.cardNumber = cardNumber;
         this.bookNumber = bookNumber;

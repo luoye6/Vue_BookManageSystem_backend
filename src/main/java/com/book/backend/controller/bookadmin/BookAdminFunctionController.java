@@ -70,7 +70,7 @@ public class BookAdminFunctionController {
          */
         R result = new R<>();
         // 图书编号
-        Integer bookNumber = booksBorrowDTO.getBookNumber();
+        Long bookNumber = booksBorrowDTO.getBookNumber();
         // 借阅证号
         Long cardNumber = booksBorrowDTO.getCardNumber();
         // 借阅时间
@@ -162,7 +162,7 @@ public class BookAdminFunctionController {
      * @return R<Violation>
      */
     @GetMapping("query_expire/{bookNumber}")
-    public R<ViolationDTO> queryExpireInformationByBookNumber(@PathVariable("bookNumber") Integer bookNumber) {
+    public R<ViolationDTO> queryExpireInformationByBookNumber(@PathVariable("bookNumber") Long bookNumber) {
         /**
          * 1.根据图书编号和归还日期(null)去借阅表中查询唯一的一条记录
          * 2.如果记录不存在,返回错误信息
@@ -213,7 +213,7 @@ public class BookAdminFunctionController {
          * 4.更新图书表，图书编号的借出状态
          * 5.三个表都更新则返回成功的响应状态码和请求信息，否则返回失败信息
          */
-        Integer bookNumber = violation.getBookNumber();
+        Long bookNumber = violation.getBookNumber();
         LocalDateTime returnDate = violation.getReturnDate();
         String violationMessage = violation.getViolationMessage();
         Integer violationAdminId = violation.getViolationAdminId();

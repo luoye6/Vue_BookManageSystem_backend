@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 
@@ -99,5 +100,18 @@ public class VueBookBackendUserTest {
     @Test
     public void getViolationList(){
         violationService.list().forEach(System.out::println);
+    }
+
+    @Test
+    public void testBorrowBooks(){
+        BooksBorrow booksBorrow1 = new BooksBorrow();
+        booksBorrow1.setBorrowId(null);
+        booksBorrow1.setBookNumber(50970375442L);
+        booksBorrow1.setCardNumber(18012345678L);
+        booksBorrow1.setBorrowDate(LocalDateTime.now());
+        booksBorrow1.setCloseDate(LocalDateTime.now().plusDays(30));
+        booksBorrow1.setReturnDate(null);
+        boolean flag = booksBorrowService.save(booksBorrow1);
+        System.out.println(flag);
     }
 }
