@@ -1,7 +1,7 @@
 package com.book.backend.common.exception;
 
 public enum CommonError {
-    UNKOWN_ERROR("执行过程异常，请重试。"),
+    UNKOWN_ERROR("系统内部错误"),
     PARAMS_ERROR("非法参数"),
     OBJECT_NULL("对象为空"),
     QUERY_NULL("查询结果为空或图书已借出"),

@@ -7,11 +7,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.book.backend.common.BasePage;
 import com.book.backend.common.Constant;
 import com.book.backend.common.R;
+import com.book.backend.common.exception.CommonError;
+import com.book.backend.common.exception.VueBookException;
 import com.book.backend.pojo.*;
-import com.book.backend.pojo.dto.BookDTO;
-import com.book.backend.pojo.dto.BookRuleDTO;
-import com.book.backend.pojo.dto.BorrowData;
-import com.book.backend.pojo.dto.UsersDTO;
+import com.book.backend.pojo.dto.*;
 import com.book.backend.service.*;
 import com.book.backend.utils.BorrowDateUtil;
 import com.book.backend.utils.NumberUtil;
@@ -24,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -45,6 +44,8 @@ public class AdminFunctionController {
     private BookAdminsService bookAdminsService;
     @Autowired
     private ViolationService violationService;
+    @Autowired
+    private BooksBorrowService booksBorrowService;
 
     @PostMapping("get_booklist")
     public R<Page<Books>> getBookList(@RequestBody BasePage basePage) {
@@ -831,5 +832,69 @@ public class AdminFunctionController {
         borrowNumbers[0] = list4.size();
         BorrowData borrowData = new BorrowData(dateArray,borrowNumbers);
         return R.success(borrowData,"获取借阅量成功");
+    }
+
+    /**
+     * 获取借书分类统计情况
+     * @return
+     */
+    @GetMapping("get_borrowtype_statistics")
+    public R<List<BorrowTypeDTO>> getBorrowTypeStatistic(){
+        /**
+         * 1.先获取所有的借书记录
+         * 2.然后根据每条记录的图书编号去查询对应的分类
+         * 3.如果hashMap中没有该分类，那么就初始化，添加String分类，然后Integer为0
+         * 4.如果hashMap中有该分类，那么就获取该分类的值+1
+         * 5.封装到通用格式中，返回前端
+         */
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        List<BorrowTypeDTO> list = new ArrayList<>();
+
+        BooksBorrowService borrowService = booksBorrowService;
+        List<BooksBorrow> booksBorrowList = borrowService.list();
+        for (BooksBorrow booksBorrow : booksBorrowList) {
+            Long bookNumber = booksBorrow.getBookNumber();
+            LambdaQueryWrapper<Books> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.eq(Books::getBookNumber,bookNumber);
+            Books book = booksService.getOne(queryWrapper);
+            if(book == null){
+                VueBookException.cast(CommonError.OBJECT_NULL);
+            }
+            String bookType = book.getBookType();
+            hashMap.put(bookType, hashMap.getOrDefault(bookType,0)+1);
+        }
+        Set<Map.Entry<String, Integer>> entries = hashMap.entrySet();
+        for (Map.Entry<String, Integer> entry : entries) {
+            BorrowTypeDTO borrowTypeDTO = new BorrowTypeDTO();
+            borrowTypeDTO.setBookTypes(entry.getKey());
+            borrowTypeDTO.setBorrowNumbers(entry.getValue());
+            list.add(borrowTypeDTO);
+        }
+        return R.success(list,"获取借书分类统计情况成功");
+    }
+
+    /**
+     * 批量删除图书
+     * @param booksList
+     * @return
+     */
+    @DeleteMapping("delete_book_batch")
+    public R<String> deleteBookByBatch(@RequestBody List<Books> booksList){
+        /**
+         * 1.先获取所有的图书列表
+         * 2.遍历图书列表，把所有需要删除的id都加入到一个集合中去
+         * 3.调用booksService的批量删除图书(根据图书id)
+         * 4.判断是否成功,如何成功返回相对应的提示信息，失败则提示失败信息
+         */
+        ArrayList<Integer> list = new ArrayList<>();
+        Iterator<Books> booksIterator = booksList.iterator();
+        while(booksIterator.hasNext()){
+            list.add(booksIterator.next().getBookId());
+        }
+        boolean delete = booksService.removeBatchByIds(list);
+        if(delete){
+            return R.success(null,"批量删除图书成功");
+        }
+        return R.error("批量删除图书失败");
     }
 }

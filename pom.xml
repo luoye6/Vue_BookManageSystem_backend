@@ -64,13 +64,13 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.83</version>
         </dependency>
-<!--        hutool工具包-->
+        <!--        hutool工具包-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.8.11</version>
         </dependency>
-<!--knife4j依赖导入-->
+        <!--knife4j依赖导入-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
@@ -100,8 +100,18 @@
                 </configuration>
             </plugin>
         </plugins>
-
-
+<!--        过滤器通过env属性去指定使用哪个环境-->
+        <filters>
+            <filter>src/main/resources/application-${env}.yml</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <!--        这里通过profiles的环境进行获取-->
+        <finalName>${jarName}</finalName>
     </build>
 
     <!-- maven多环境打包配置 -->
@@ -111,6 +121,8 @@
             <id>dev</id>
             <properties>
                 <spring.profiles.active>dev</spring.profiles.active>
+                <env>dev</env>
+               <jarName>dev</jarName>
             </properties>
             <!-- 设置为默认环境 -->
             <activation>
@@ -122,6 +134,8 @@
             <id>prod</id>
             <properties>
                 <spring.profiles.active>prod</spring.profiles.active>
+                <env>prod</env>
+                <jarName>prod</jarName>
             </properties>
         </profile>
     </profiles>

@@ -52,7 +52,12 @@ public class R<T> {
         r.msg = msg;
         return r;
     }
-
+    public static <T> R<T> error(String msg,int code) {
+        R<T> r = new R<T>();
+        r.msg = msg;
+        r.status = code;
+        return r;
+    }
     /**
      * 自定义类型的添加 加入到动态数据HashMap中
      * @param key string
