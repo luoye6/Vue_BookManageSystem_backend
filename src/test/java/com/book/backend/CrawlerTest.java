@@ -9,9 +9,14 @@ import cn.hutool.json.JSONUtil;
 import com.book.backend.pojo.Books;
 import com.book.backend.utils.NumberUtil;
 import com.book.backend.utils.RandomNameUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -90,8 +95,8 @@ public class CrawlerTest {
             String bookName = tempRecord.getStr("name");
             String author = tempRecord.getStr("translatorNameString");
             String bookDescription = tempRecord.getStr("abstract");
-            if(bookDescription.length()>=255){
-                bookDescription = bookDescription.substring(0,254);
+            if (bookDescription.length() >= 255) {
+                bookDescription = bookDescription.substring(0, 254);
             }
             books.setBookNumber(bookNumber);
             books.setBookName(bookName);
@@ -105,5 +110,70 @@ public class CrawlerTest {
             booksList.add(books);
         }
         booksList.forEach(System.out::println);
+    }
+
+    @Test
+    public void fetchLibrary() throws IOException {
+        String url = "https://search.bilibili.com/all?keyword=Java&page=1";
+        List<Video> videos = new ArrayList<>();
+        for (int i = 1; i <= 5; i++) {
+            String pageUrl = url + i;
+            Document doc = Jsoup.connect(pageUrl)
+                    .userAgent("Mozilla")
+                    .referrer("https://www.bilibili.com/")
+                    .timeout(100000)
+                    .get();
+            Elements items = doc.select(".video-list > ul > li");
+            for (Element item : items) {
+                Element titleElement = item.select(".title > a").first();
+                String title = titleElement.text();
+                String videoUrl = titleElement.attr("href");
+                Element authorElement = item.select(".up-name > a").first();
+                String author = authorElement.text();
+                String authorUrl = authorElement.attr("href");
+                String playCount = item.select(".play > span").first().text();
+                String danmuCount = item.select(".dm > span").first().text();
+                String releaseTime = item.select(".so-icon.time > span").first().text();
+                Video video = new Video(title, videoUrl, author, authorUrl, playCount, danmuCount, releaseTime);
+                videos.add(video);
+            }
+        }
+
+        for (Video video : videos) {
+            System.out.println(video);
+        }
+    }
+
+    static class Video {
+        private String title;
+        private String videoUrl;
+        private String author;
+        private String authorUrl;
+        private String playCount;
+        private String danmuCount;
+        private String releaseTime;
+
+        public Video(String title, String videoUrl, String author, String authorUrl, String playCount, String danmuCount, String releaseTime) {
+            this.title = title;
+            this.videoUrl = videoUrl;
+            this.author = author;
+            this.authorUrl = authorUrl;
+            this.playCount = playCount;
+            this.danmuCount = danmuCount;
+            this.releaseTime = releaseTime;
+        }
+
+        @Override
+        public String toString() {
+            return "Video{" +
+                    "title='" + title + '\'' +
+                    ", videoUrl='" + videoUrl + '\'' +
+                    ", author='" + author + '\'' +
+                    ", authorUrl='" + authorUrl + '\'' +
+                    ", playCount='" + playCount + '\'' +
+                    ", danmuCount='" + danmuCount + '\'' +
+                    ", releaseTime='" + releaseTime + '\'' +
+                    '}';
+        }
     }
 }

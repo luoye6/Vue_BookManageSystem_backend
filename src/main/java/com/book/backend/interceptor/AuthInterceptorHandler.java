@@ -27,8 +27,7 @@ public class AuthInterceptorHandler implements HandlerInterceptor {
      * 前置拦截器
      */
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 
         if(!(handler instanceof HandlerMethod)){
             return true;
@@ -66,11 +65,8 @@ public class AuthInterceptorHandler implements HandlerInterceptor {
                 String json1 = jsonObject.toJSONString();
                 renderJson(response, json1);
             }
-            if (claims == null) {
-                return false;
-            }
+            return claims != null;
             // 获取payload中的报文，
-            return true;
         }
         // 如果token不存在
         jsonObject.put("status", 401);
