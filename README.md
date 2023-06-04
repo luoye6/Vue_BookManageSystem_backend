@@ -8,6 +8,12 @@
 + [项目后端地址](https://gitee.com/falle22222n-leaves/vue_-book-manage-system_backend)
 + [项目部署视频](https://www.bilibili.com/video/BV1314y1Z7SS/?pop_share=1&vd_source=e40a9464b71684502f289cff3f51514f)
 
+## ☀️个人介绍
+
+![img](http://xxx.xiaobaitiao.club/project/微信加好友.png)
+
+![img](http://xxx.xiaobaitiao.club/project/QQ加好友.jpg)
+
 ## ☀️技术栈介绍
 
 ### ☃️前端主要技术栈
@@ -436,3 +442,4 @@
 **Bug修复情况**
 
 1.11位图书编号可以借，但却**无法进行逾期检查**，发现方法参数还是Integer,上次把借书和还书的改成Long了，逾期查看还没改成Long,因此出现问题，现在已经修复。
+
