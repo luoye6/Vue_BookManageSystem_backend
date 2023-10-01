@@ -1,11 +1,12 @@
 package com.book.backend.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.book.backend.common.R;
 import com.book.backend.pojo.Admins;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.book.backend.pojo.BookRule;
 import com.book.backend.pojo.dto.UsersDTO;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
 * @author 赵天宇
@@ -16,8 +17,8 @@ public interface AdminsService extends IService<Admins> {
 
     /**
      * 添加借阅证
-     * @param usersDTO
-     * @return
+     * @param usersDTO 用户DTO
+     * @return R<String>
      */
     R<String> addRule(UsersDTO usersDTO);
     /**
@@ -32,4 +33,12 @@ public interface AdminsService extends IService<Admins> {
      * @return R<Admins>
      */
     R<Admins> getUserData( Admins admin);
+
+
+    /**
+     * Excel批量导入图书
+     * @param file Excel文件
+     * @return R<string>
+     */
+    R<String>  upload( MultipartFile file) throws IOException;
 }

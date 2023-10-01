@@ -1,15 +1,13 @@
 package com.book.backend.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.book.backend.common.BasePage;
 import com.book.backend.common.R;
 import com.book.backend.pojo.Books;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.book.backend.pojo.dto.BookDTO;
 import com.book.backend.pojo.dto.BooksBorrowDTO;
 import com.book.backend.pojo.dto.BorrowTypeDTO;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -89,4 +87,5 @@ public interface BooksService extends IService<Books> {
      * @return R<String>
      */
     R<String> deleteBookByBatch( List<Books> booksList);
+
 }

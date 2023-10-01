@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.book.backend.common.BasePage;
-import com.book.backend.common.Constant;
+import com.book.backend.constant.Constant;
 import com.book.backend.common.R;
 import com.book.backend.common.exception.CommonError;
 import com.book.backend.common.exception.VueBookException;
@@ -309,6 +309,7 @@ public class BooksServiceImpl extends ServiceImpl<BooksMapper, Books>
         result.setMsg("获取图书信息成功");
         return result;
     }
+
     /**
      * 1.判断books是否为空
      * 2.为空返回错误信息
@@ -323,8 +324,9 @@ public class BooksServiceImpl extends ServiceImpl<BooksMapper, Books>
         if (!update) {
             return R.error("修改图书失败");
         }
-        return R.success(null,"修改图书成功");
+        return R.success(null, "修改图书成功");
     }
+
     /**
      * 1.先获取所有的借书记录
      * 2.然后根据每条记录的图书编号去查询对应的分类
@@ -360,6 +362,7 @@ public class BooksServiceImpl extends ServiceImpl<BooksMapper, Books>
         }
         return R.success(list, "获取借书分类统计情况成功");
     }
+
     /**
      * 1.先获取所有的图书列表
      * 2.遍历图书列表，把所有需要删除的id都加入到一个集合中去
@@ -378,6 +381,8 @@ public class BooksServiceImpl extends ServiceImpl<BooksMapper, Books>
         }
         return R.error("批量删除图书失败");
     }
+
+
 }
 
 

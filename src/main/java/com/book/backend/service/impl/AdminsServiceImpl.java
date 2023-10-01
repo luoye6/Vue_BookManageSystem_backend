@@ -1,16 +1,22 @@
 package com.book.backend.service.impl;
 
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.context.AnalysisContext;
+import com.alibaba.excel.event.AnalysisEventListener;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.book.backend.common.Constant;
+import com.book.backend.constant.Constant;
 import com.book.backend.common.R;
 import com.book.backend.mapper.AdminsMapper;
 import com.book.backend.pojo.Admins;
+import com.book.backend.pojo.Books;
 import com.book.backend.pojo.Users;
+import com.book.backend.pojo.dto.BookData;
 import com.book.backend.pojo.dto.UsersDTO;
 import com.book.backend.service.AdminsService;
+import com.book.backend.service.BooksService;
 import com.book.backend.service.UsersService;
 import com.book.backend.utils.JwtKit;
 import com.book.backend.utils.NumberUtil;
@@ -18,8 +24,11 @@ import com.book.backend.utils.RandomNameUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author 赵天宇
@@ -36,6 +45,8 @@ public class AdminsServiceImpl extends ServiceImpl<AdminsMapper, Admins>
     private static final String SALT = "xiaobaitiao";
     @Resource
     private UsersService usersService;
+    @Resource
+    private BooksService booksService;
     @Resource
     private JwtKit jwtKit;
     /**
@@ -136,6 +147,47 @@ public class AdminsServiceImpl extends ServiceImpl<AdminsMapper, Admins>
         r.setStatus(200);
         r.setMsg("获取系统管理员数据成功");
         return r;
+    }
+
+    @Override
+    public R<String> upload(MultipartFile file) throws IOException {
+
+        // 读取excel
+        EasyExcel.read(file.getInputStream(), BookData.class, new AnalysisEventListener<BookData>() {
+            ArrayList<Books> booksList = new ArrayList<>();
+            // 每解析一行数据,该方法会被调用一次
+            @Override
+            public void invoke(BookData bookData, AnalysisContext analysisContext) {
+                Books books = new Books();
+                // 生成11位数字的图书编号
+                StringBuilder stringBuilder = NumberUtil.getNumber(11);
+                long bookNumber = Long.parseLong(new String(stringBuilder));
+                BeanUtils.copyProperties(bookData,books);
+                books.setBookNumber(bookNumber);
+                booksList.add(books);
+//                System.out.println("解析数据为:" + bookData.toString());
+            }
+            // 全部解析完成被调用
+            @Override
+            public void doAfterAllAnalysed(AnalysisContext analysisContext) {
+                // 全部加入到容器list中后，一次性批量导入,先判断容器是否为空
+                if(!booksList.isEmpty()){
+                    // 可以将解析的数据保存到数据库
+                    boolean flag = booksService.saveBatch(booksList);
+                    // 如果数据添加成功
+                    if(flag){
+                        System.out.println("Excel批量添加图书成功");
+                    }else{
+                        System.out.println("Excel批量添加图书失败");
+                    }
+                }else{
+                    System.out.println("空表无法进行数据导入");
+                }
+                System.out.println("解析完成...");
+
+            }
+        }).sheet().doRead();
+        return R.success(null,"Excel批量添加图书成功");
     }
 }
 

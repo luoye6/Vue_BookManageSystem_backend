@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.book.backend.common.BasePage;
-import com.book.backend.common.Constant;
+import com.book.backend.constant.Constant;
 import com.book.backend.common.R;
 import com.book.backend.mapper.BooksBorrowMapper;
 import com.book.backend.pojo.Books;

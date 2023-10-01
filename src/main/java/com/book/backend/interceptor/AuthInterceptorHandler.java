@@ -1,7 +1,7 @@
 package com.book.backend.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
-import com.book.backend.common.Constant;
+import com.book.backend.constant.Constant;
 import com.book.backend.common.JwtProperties;
 import com.book.backend.utils.JwtKit;
 import io.jsonwebtoken.Claims;

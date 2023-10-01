@@ -17,7 +17,7 @@ public class Admins implements Serializable {
      * 管理员表的唯一标识
      */
     @TableId(type = IdType.AUTO)
-    private Integer adminId;
+    private Long adminId;
 
     /**
      * 用户名

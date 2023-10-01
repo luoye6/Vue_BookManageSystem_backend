@@ -1,4 +1,4 @@
-package com.book.backend.common;
+package com.book.backend.constant;
 
 /**
  * @author 赵天宇
@@ -42,4 +42,17 @@ public class Constant {
      * 密码超过30，判定为md5加密字符
      */
     public static final Integer MD5PASSWORD = 30;
+    /**
+     * 升序
+     */
+    public static final String SORT_ORDER_ASC = "ascend";
+
+    /**
+     * 降序
+     */
+    public static final String SORT_ORDER_DESC = " descend";
+    /**
+     * BI 模型 id
+     */
+    public static final long BI_MODEL_ID = 1659171950288818178L;
 }

@@ -33,6 +33,8 @@ public class UserFunctionController {
 
     @Resource
     private CommentService commentService;
+    @Resource
+    private AiIntelligentService aiIntelligentService;
 
     /**
      * 图书查询 分页和条件查询 (模糊查询)
@@ -126,5 +128,19 @@ public class UserFunctionController {
     @PostMapping("add_comment")
     public R<String> addComment(@RequestBody CommentDTO commentDTO) {
         return commentService.addComment(commentDTO);
+    }
+
+    /**
+     * 调用AI模型，获取数据库中有的，并且推荐图书给用户
+     * @param aiIntelligent
+     * @return
+     */
+    @PostMapping("ai_intelligent")
+    public R<String> aiRecommend(@RequestBody AiIntelligent aiIntelligent){
+        return aiIntelligentService.getGenResult(aiIntelligent);
+    }
+    @GetMapping("ai_list_information/{userId}")
+    public R<List<AiIntelligent>> getAiInformationByUserId(@PathVariable("userId") Long userId){
+        return aiIntelligentService.getAiInformationByUserId(userId);
     }
 }

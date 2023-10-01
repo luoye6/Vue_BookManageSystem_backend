@@ -8,41 +8,37 @@ import lombok.Data;
 
 /**
  *
- * @TableName t_book_admins
+ * @TableName t_user_interface_info
  */
-@TableName(value ="t_book_admins")
+@TableName(value ="t_user_interface_info")
 @Data
-public class BookAdmins implements Serializable {
+public class UserInterfaceInfo implements Serializable {
     /**
-     * 图书管理员表的唯一标识
+     *
      */
-    @TableId(type = IdType.AUTO)
-    private Long bookAdminId;
+    @TableId(type=IdType.AUTO)
+    private Long id;
 
     /**
-     * 用户名
+     * 用户id
      */
-    private String username;
+    private Long userId;
 
     /**
-     * 密码md5加密
+     * 1 表示AI聊天接口 2表示智能分析接口
      */
-    private String password;
+    private Long interfaceId;
 
     /**
-     * 图书管理员真实姓名
+     * 总共调用接口次数
+
      */
-    private String bookAdminName;
+    private Integer totalNum;
 
     /**
-     * 1表示可用 0表示禁用
+     * 剩余接口可用次数
      */
-    private Integer status;
-
-    /**
-     * 电子邮箱
-     */
-    private String email;
+    private Integer leftNum;
 
     /**
      * 创建时间

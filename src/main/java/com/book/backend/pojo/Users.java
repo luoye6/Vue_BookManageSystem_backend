@@ -18,7 +18,7 @@ public class Users implements Serializable {
      * 用户表的唯一标识
      */
     @TableId(type = IdType.AUTO)
-    private Integer userId;
+    private Long userId;
 
     /**
      * 用户名

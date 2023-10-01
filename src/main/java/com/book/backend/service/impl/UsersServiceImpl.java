@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.book.backend.common.BasePage;
-import com.book.backend.common.Constant;
+import com.book.backend.constant.Constant;
 import com.book.backend.common.R;
 import com.book.backend.common.exception.CommonError;
 import com.book.backend.common.exception.VueBookException;
@@ -34,7 +34,10 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
 
     @Resource
     private JwtKit jwtKit;
-
+    /**
+     * 盐值，混淆密码
+     */
+    private static final String SALT = "xiaobaitiao";
     /**
      * 1.获取userId,创建条件构造器 判断userId是否为null
      * 2.调用userService的getOne查询是否等于该用户id的用户
@@ -78,7 +81,7 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
 
         // 条件构造器
         LambdaQueryWrapper<Users> queryWrapper = new LambdaQueryWrapper<>();
-        Integer userId = users.getUserId();
+        Long userId = users.getUserId();
         // 当userId!=null时,调用条件构造器
         queryWrapper.eq(userId != null, Users::getUserId, userId);
         String password = users.getPassword();
@@ -87,8 +90,9 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
         if (userOne == null) {
             return R.error("更改密码失败");
         }
-        // 密码加密
-        String md5Password = DigestUtils.md5DigestAsHex(password.getBytes());
+        // 密码加密加上盐值
+        String saltPassword = SALT+password;
+        String md5Password = DigestUtils.md5DigestAsHex(saltPassword.getBytes());
         userOne.setPassword(md5Password);
         boolean update = this.update(userOne, queryWrapper);
         if (!update) {
@@ -254,7 +258,8 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
         if (password.length() >= Constant.MD5PASSWORD) {
             users.setPassword(password);
         } else {
-            String md5Password = DigestUtils.md5DigestAsHex(password.getBytes());
+            String saltPassword = SALT+password;
+            String md5Password = DigestUtils.md5DigestAsHex(saltPassword.getBytes());
             users.setPassword(md5Password);
         }
 

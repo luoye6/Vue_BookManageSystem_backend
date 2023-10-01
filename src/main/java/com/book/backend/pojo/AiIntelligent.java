@@ -8,41 +8,30 @@ import lombok.Data;
 
 /**
  *
- * @TableName t_book_admins
+ * @TableName t_ai_intelligent
  */
-@TableName(value ="t_book_admins")
+@TableName(value ="t_ai_intelligent")
 @Data
-public class BookAdmins implements Serializable {
+public class AiIntelligent implements Serializable {
     /**
-     * 图书管理员表的唯一标识
+     *
      */
-    @TableId(type = IdType.AUTO)
-    private Long bookAdminId;
+    @TableId(type = IdType.ASSIGN_ID)
+    private Long id;
 
     /**
-     * 用户名
+     * 用户输入信息
      */
-    private String username;
+    private String inputMessage;
+    /**
+     * AI生成的信息
+     */
+   private String aiResult;
 
     /**
-     * 密码md5加密
+     * 用户id，标识是哪个用户的信息 可以为Null
      */
-    private String password;
-
-    /**
-     * 图书管理员真实姓名
-     */
-    private String bookAdminName;
-
-    /**
-     * 1表示可用 0表示禁用
-     */
-    private Integer status;
-
-    /**
-     * 电子邮箱
-     */
-    private String email;
+    private Long userId;
 
     /**
      * 创建时间

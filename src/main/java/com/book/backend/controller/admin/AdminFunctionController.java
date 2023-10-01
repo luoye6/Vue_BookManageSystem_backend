@@ -1,14 +1,19 @@
 package com.book.backend.controller.admin;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.book.backend.common.BasePage;
 import com.book.backend.common.R;
 import com.book.backend.pojo.*;
 import com.book.backend.pojo.dto.*;
+import com.book.backend.pojo.dto.chart.GenChartByAiRequest;
+import com.book.backend.pojo.vo.BiResponse;
 import com.book.backend.service.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -33,6 +38,8 @@ public class AdminFunctionController {
 
     @Resource
     private AdminsService adminsService;
+    @Resource
+    private ChartService chartService;
 
     /**
      * 获取图书列表
@@ -270,7 +277,7 @@ public class AdminFunctionController {
      */
     @PostMapping("get_bookadminlist")
     public R<Page<BookAdmins>> getBookAdminListByPage(@RequestBody BasePage basePage) {
-       return bookAdminsService.getBookAdminListByPage(basePage);
+        return bookAdminsService.getBookAdminListByPage(basePage);
     }
 
     /**
@@ -303,7 +310,7 @@ public class AdminFunctionController {
      */
     @DeleteMapping("delete_bookadmin/{bookAdminId}")
     public R<String> deleteBookAdminById(@PathVariable("bookAdminId") Integer bookAdminId) {
-       return bookAdminsService.deleteBookAdminById(bookAdminId);
+        return bookAdminsService.deleteBookAdminById(bookAdminId);
     }
 
     /**
@@ -314,7 +321,7 @@ public class AdminFunctionController {
      */
     @PutMapping("update_bookadmin")
     public R<String> updateBookAdmin(@RequestBody BookAdmins bookAdmins) {
-       return bookAdminsService.updateBookAdmin(bookAdmins);
+        return bookAdminsService.updateBookAdmin(bookAdmins);
     }
 
     /**
@@ -330,11 +337,11 @@ public class AdminFunctionController {
     /**
      * 获取借书分类统计情况
      *
-     * @return R<List<BorrowTypeDTO>>
+     * @return R<List < BorrowTypeDTO>>
      */
     @GetMapping("get_borrowtype_statistics")
     public R<List<BorrowTypeDTO>> getBorrowTypeStatistic() {
-       return booksService.getBorrowTypeStatistic();
+        return booksService.getBorrowTypeStatistic();
     }
 
     /**
@@ -345,7 +352,31 @@ public class AdminFunctionController {
      */
     @DeleteMapping("delete_book_batch")
     public R<String> deleteBookByBatch(@RequestBody List<Books> booksList) {
-      return booksService.deleteBookByBatch(booksList);
+        return booksService.deleteBookByBatch(booksList);
 
+    }
+
+    /**
+     * 从Excel批量导入图书
+     *
+     * @param file 文件
+     * @return R<String>
+     * @throws IOException IO异常
+     */
+    @PostMapping("/updown")
+    public R<String> upload(@RequestParam("files") MultipartFile file) throws IOException {
+        return adminsService.upload(file);
+    }
+
+    /**
+     * 根据用户输入信息，生成图表
+     * @param multipartFile 文件
+     * @param genChartByAiRequest 用户输入信息(分析目标,图标类型，名称),用户id
+     * @return R<BiResponse>
+     */
+    @PostMapping("/gen")
+    public R<BiResponse> genChartByAi(@RequestPart("file") MultipartFile multipartFile,
+                                                 GenChartByAiRequest genChartByAiRequest) {
+        return chartService.genChartByAi(multipartFile,genChartByAiRequest);
     }
 }
