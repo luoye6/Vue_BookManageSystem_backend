@@ -1,20 +1,28 @@
+# 智能图书馆开源文档
+
+>作者：[程序员小白条](https://luoye6.github.io/)
+>
+>[Gitee 主页](https://gitee.com/falle22222n-leaves)
+>
+>[GitHub 主页](https://github.com/luoye6)
+
 ## ☀️新手必读
 
 + 本项目拥有完整的API后台接口文档（文尾)(重点⭐)
 + 项目部署视频正在录制
 + 如果项目对您有所帮助，可以Star⭐一下，受到鼓励的我会继续加油。
-+ [项目在线演示地址](https://abc.xiaobaitiao.club/)
++ [项目在线演示地址](https://www.xiaobaitiao.top)
 + [项目前端地址](https://gitee.com/falle22222n-leaves/vue_-book-manage-system)
 + [项目后端地址](https://gitee.com/falle22222n-leaves/vue_-book-manage-system_backend)
 + [项目部署视频](https://www.bilibili.com/video/BV1314y1Z7SS/?pop_share=1&vd_source=e40a9464b71684502f289cff3f51514f)
 
-​														[![star](https://gitee.com/falle22222n-leaves/vue_-book-manage-system/badge/star.svg?theme=dark)](https://gitee.com/falle22222n-leaves/vue_-book-manage-system)  [![gitee](https://badgen.net/badge/gitee/falle22222n-leaves/red)](https://gitee.com/falle22222n-leaves)  [![fork](http://xxx.xiaobaitiao.club/project/fork.svg)](https://gitee.com/falle22222n-leaves/vue_-book-manage-system/members)  [![github](https://badgen.net/badge/github/github?icon)](https://github.com/luoye6)
+​														[![star](https://gitee.com/falle22222n-leaves/vue_-book-manage-system/badge/star.svg?theme=dark)](https://gitee.com/falle22222n-leaves/vue_-book-manage-system)  [![gitee](https://badgen.net/badge/gitee/falle22222n-leaves/red)](https://gitee.com/falle22222n-leaves)  [![github](https://badgen.net/badge/github/github?icon)](https://github.com/luoye6)
 
 ## ☀️个人介绍
 
-![img](http://xxx.xiaobaitiao.club/project/微信加好友.png)
+![image-20231030110808831](https://pic.yupi.icu/5563/image-20231030110808831.png)
 
-![img](http://xxx.xiaobaitiao.club/project/QQ加好友.jpg)
+![image-20231030110232309](https://pic.yupi.icu/5563/image-20231030110232309.png)
 
 ## ☀️技术栈介绍
 
@@ -55,11 +63,15 @@
 | fastjson                           | 阿里巴巴的json对象转化工具                                   | 1.2.83                            |
 | hutool                             | hutool工具包(简化开发工具类)                                 | [文档](https://hutool.cn/docs/#/) |
 
+## ☀️架构
+
+![图书管理系统架构图](https://pic.yupi.icu/5563/202311101959386.png)
+
 ## ☀️项目简介
 
 + 主要使用Vue2和SpringBoot2实现
 + 项目权限控制分别为：用户借阅，图书管理员，系统管理员
-+ 开发工具：IDEA2022.1.3(真不推荐用eclipse开发，IDEA项目可以导出为eclipse项目，二者不影响，但需要自己学教程)
++ 开发工具：IDEA2022.1.3(真不推荐用eclipse开发，IDEA项目可以导出为eclipse项目，二者不影响，但需要自己学教程) 
 + [IDEA->Eclipse](https://blog.csdn.net/HD202202/article/details/128076400)
 + [Eclipse->IDEA](https://blog.csdn.net/q20010619/article/details/125096051)
 
@@ -89,7 +101,7 @@
 
 ### ⭐用户模块功能介绍
 
-![img](http://xxx.xiaobaitiao.club/project/%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D.png)
+![image-20231030110244726](https://pic.yupi.icu/5563/image-20231030110244726.png)
 
 + 图书查询功能：分页构造器缓解数据过大压力，后端可设置请求数防止爬虫请求数过大，服务器负载过大。模糊查询进行字段搜索。表格均可导出PDF和EXCEL。
 + 读者规则功能：查询现有的借阅规则，借阅规则包括：借阅编号，可借阅图书数量，可借阅天数，可借阅图书馆，过期扣费/天。
@@ -103,7 +115,7 @@
 
 ### ⭐图书管理员模块功能介绍
 
-![image-20230311151434774](http://xxx.xiaobaitiao.club/project/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%9D%97%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D%E5%9B%BE.png)
+![image-20231030110256051](https://pic.yupi.icu/5563/image-20231030110256051.png)
 
 + 借阅图书: 图书管理员输入借阅证号(用户)和要借的图书编号和当前的时间，点击借阅。
 + 归还图书: 输入图书编号查看图书是否逾期，并且可以设置违规信息，然后选择是否归还图书
@@ -114,7 +126,7 @@
 
 ### ⭐系统管理员模块功能介绍
 
-![image-20230311151453931](http://xxx.xiaobaitiao.club/project/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D%E5%9B%BE.png)
+![image-20231030110303880](https://pic.yupi.icu/5563/image-20231030110303880.png)
 
 + 书籍管理: 可以查询当前的所有图书，显示图书编号，图书昵称，作者，图书馆，分类，位置，状态，描述。可以进行添加，修改，删除图书。利用分页构造器实现批量查询。利用模糊查询实现图书搜索功能。利用插件实现PDF和EXCEL导出。
 + 书籍类型: 显示查询当前的所有图书类型，可以进行添加，修改，删除图书类型，利用分页构造器实现批量查询，缓解数据压力。
@@ -261,61 +273,61 @@
 
 **首页轮播图演示**
 
-![image-20230311151755217](http://xxx.xiaobaitiao.club/project/%E9%A6%96%E9%A1%B5%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%BC%94%E7%A4%BA.png)
+![image-20231030110318881](https://pic.yupi.icu/5563/image-20231030110318881.png)
 
 **图书查询演示**
 
-![image-20230311151815350](http://xxx.xiaobaitiao.club/project/%E5%9B%BE%E4%B9%A6%E6%9F%A5%E8%AF%A2%E6%BC%94%E7%A4%BA.png)
+![image-20231030110329273](https://pic.yupi.icu/5563/image-20231030110329273.png)
 
 **读者规则演示**
 
-![image-20230311151837692](http://xxx.xiaobaitiao.club/project/%E8%AF%BB%E8%80%85%E8%A7%84%E5%88%99%E6%BC%94%E7%A4%BA.png)
+![image-20231030110333842](https://pic.yupi.icu/5563/image-20231030110333842.png)
 
 **查看公告演示**
 
-![image-20230311151858285](http://xxx.xiaobaitiao.club/project/%E6%9F%A5%E7%9C%8B%E5%85%AC%E5%91%8A%E6%BC%94%E7%A4%BA.png)
+![image-20231030110340781](https://pic.yupi.icu/5563/image-20231030110340781.png)
 
 **个人信息演示**
 
-![image-20230311151918353](http://xxx.xiaobaitiao.club/project/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%BC%94%E7%A4%BA.png)
+![image-20231030110345751](https://pic.yupi.icu/5563/image-20231030110348229.png)
 
 **借阅信息演示**
 
-![image-20230311151939885](http://xxx.xiaobaitiao.club/project/%E5%80%9F%E9%98%85%E4%BF%A1%E6%81%AF%E6%BC%94%E7%A4%BA.png)
+![image-20231030110405947](https://pic.yupi.icu/5563/image-20231030110405947.png)
 
 **违章信息演示**
 
-![image-20230311151958147](http://xxx.xiaobaitiao.club/project/%E8%BF%9D%E7%AB%A0%E4%BF%A1%E6%81%AF%E6%BC%94%E7%A4%BA.png)
+![image-20231030110414231](https://pic.yupi.icu/5563/image-20231030110414231.png)
 
 **读者留言演示**
 
-![image-20230311152043122](http://xxx.xiaobaitiao.club/project/%E8%AF%BB%E8%80%85%E7%95%99%E8%A8%80%E6%BC%94%E7%A4%BA.png)
+![image-20231030110420564](https://pic.yupi.icu/5563/image-20231030110420564.png)
 
 **智能推荐演示**
 
-![image-智能推荐](http://xxx.xiaobaitiao.club/project/image-20230927115859803.png)
+![image-20231030110529142](https://pic.yupi.icu/5563/image-20231030110529142.png)
 
 ### 图书管理员功能图
 
 **借阅图书演示**
 
-![image-20230311152118721](http://xxx.xiaobaitiao.club/project/%E5%80%9F%E9%98%85%E5%9B%BE%E4%B9%A6%E6%BC%94%E7%A4%BA.png)
+![image-20231030110551512](https://pic.yupi.icu/5563/image-20231030110551512.png)
 
 **归还图书演示**
 
-![image-20230311152136821](http://xxx.xiaobaitiao.club/project/%E5%BD%92%E8%BF%98%E5%9B%BE%E4%B9%A6%E6%BC%94%E7%A4%BA.png)
+![image-20231030110611331](https://pic.yupi.icu/5563/image-20231030110611331.png)
 
 **借书报表演示**
 
-![image-20230311152220983](http://xxx.xiaobaitiao.club/project/%E5%80%9F%E4%B9%A6%E6%8A%A5%E8%A1%A8.png)
+![image-20231030110618748](https://pic.yupi.icu/5563/image-20231030110618748.png)
 
 **还书报表演示**
 
-![image-20230311152251587](http://xxx.xiaobaitiao.club/project/%E8%BF%98%E4%B9%A6%E6%8A%A5%E8%A1%A8.png)
+![image-20231030110626015](https://pic.yupi.icu/5563/image-20231030110626015.png)
 
 **发布公告演示**
 
-![image-20230311152310736](http://xxx.xiaobaitiao.club/project/%E5%8F%91%E5%B8%83%E5%85%AC%E5%91%8A%E6%BC%94%E7%A4%BA.png)
+![image-20231030110634352](https://pic.yupi.icu/5563/image-20231030110634352.png)
 
 ### 系统管理员功能图
 
@@ -323,23 +335,23 @@
 
 **系统管理演示**
 
-![image-20230311152338284](http://xxx.xiaobaitiao.club/project/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.png)
+![image-20231030110641741](https://pic.yupi.icu/5563/image-20231030110641741.png)
 
-![image-20230927120332940](http://xxx.xiaobaitiao.club/project/image-20230927120332940.png)
+![image-20231030110649230](https://pic.yupi.icu/5563/image-20231030110649230.png)
 
 **智能分析演示**
 
-![image-智能分析](http://xxx.xiaobaitiao.club/project/image-20230927115859803.png)
+![image-20231030110656108](https://pic.yupi.icu/5563/image-20231030110656108.png)
 
 ## 🐼部署项目
 
-![image-20230311152411864](http://xxx.xiaobaitiao.club/project/%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E6%BC%94%E7%A4%BA1.png)
+![image-20231030110703088](https://pic.yupi.icu/5563/image-20231030110703088.png)
 
 + 可以下载ZIP压缩包或者使用克隆(Git clone)
 + 复制http或者ssh的链接（github建议ssh,gittee都可以)
 + 在D盘新建一个文件夹，点击进入该文件夹，右键Git Bash Here
 
-![image-20230311152442211](http://xxx.xiaobaitiao.club/project/%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E6%BC%94%E7%A4%BA2.png)
+![image-20231030110713924](https://pic.yupi.icu/5563/image-20231030110713924.png)
 
 + 还没有下载Git或者不会Git的建议先看基础教程（30分钟左右)
 
@@ -350,13 +362,13 @@
 + 成功拉取项目（前端后端都是如此)
 + 前端项目注意依赖下载使用npm install 或者 yarn install （Vscode或者Webstorm)
 + 后端项目注意maven依赖下载（IDEA(推荐)或者Ecplise)
-+ 前端npm 镜像源建议淘宝镜像源，后端maven镜像源推荐阿里云镜像源（非必选，但更换后下载快速)
++ 前端npm 镜像源建议淘宝镜像源，后端maven镜像源推荐阿里云镜像源（非必选，但更换后下载快速) 
 
 ## 🐼部署项目问题
 
 ⭐
 
-+ 乱码问题 项目采用的UFT-8
++ 乱码问题 项目采用的UFT-8 
 + 一般出现乱码就是UTF-8和GBK二者相反
 + 请百度IDEA乱码和Eclipse乱码问题(描述清楚即可)
 
@@ -384,12 +396,24 @@
 + 看清楚文档的基准地址
 + 要API后端接口文档详细内容和数据库结构+内容一起的，将前后端**star**⭐的截图加我QQ：**909088445**发我即可领取~感谢支持
 
+#### **数据库领取截图示例：**
+
+![](https://pic.yupi.icu/5563/202312042148486.png)
+
+![](https://pic.yupi.icu/5563/202312042148467.png)
+
 ## 🐷其他
 
 + 个人博客地址: https://luoye6.github.io/
 + 个人博客采用Hexo+Github托管
 + 采用butterfly主题可以实现定制化
 + 推荐有空闲时间的，可以花1-2天搭建个人博客用于记录笔记。
+
+## ☕请我喝咖啡
+
+如果本项目对您有所帮助，不妨请作者我喝杯咖啡 ：）
+
+<div><img src="https://pic.yupi.icu/5563/202312191854931.png" style="height:300px;width:300px"></img> <img src="https://pic.yupi.icu/5563/202312191859536.png" style="height:300px;width:300px"></img></div>
 
 ## **版本迭代**
 
@@ -433,7 +457,7 @@
 
 **后端更新情况**
 
-1.防止前端抓包被获取明文密码，前端输入密码，进行md5加密（混合盐值，防止碰撞),后端直接与数据库加密后的密码比较，相等代表登录成功。提高系统**安全性**。
+1.~~防止前端抓包被获取明文密码，前端输入密码，进行md5加密（混合盐值，防止碰撞),后端直接与数据库加密后的密码比较，相等代表登录成功。提高系统**安全性**!~~。
 
 2.整改Controller层，**将业务代码全部放入Service层**，由Controller调用Service服务，并修改了@Transactional注解位置到业务层，减少耦合度，让Controller减少臃肿。做到对扩展开放，对修改关闭。后续考虑运用**设计模式**进行优化代码和**多线程**知识提高在**高并发**下接口响应的速度。
 
@@ -483,7 +507,7 @@
 
 **前端更新情况**
 
-1.增加**智能推荐页面，**能够与AI进行交流**，用户输入自己喜欢xxx类的书籍，AI能够在现有数据库中进行分析，**然后给用户作出推荐**，调用的是国内AI模型，底层是OpenAI。
+1.增加**智能推荐页面**，能够与AI进行交流，**用户输入自己喜欢xxx类的书籍，AI能够在现有数据库中进行分析**，然后给用户作出推荐，调用的是国内AI模型，底层是OpenAI。
 
 2.增加**智能分析页面**，输入分析目标和图标类型和Excel文件，AI生成分析结论和可视化图标，大大提高效率，**减少人力分析成本**。
 
@@ -494,3 +518,23 @@
 1.增加智能分析的接口和获取最近5条聊天记录的接口，利用**线程池**和**Future**进行**超时请求处理**，如果接口调用超过40秒直接返回错误信息。
 
 2.利用Google的Guava中的RateLimiter进行限流控制，**每秒钟只允许一个请求通过**，防止刷量行为。
+
+### 2023-11
+
+**后端更新情况**
+
+1.将用户聊天的AI模型切换为阿里的通义千问Plus模型，并且**支持多轮会话的历史记录**，**不再使用讯飞星火的AI模型**，但仍保留工具类。主要是为了可以更快的得到响应，而且阿里的**文档更加详细**，可以**定制话术**，在用户输入无关图书推荐的内容时候，直接**拒绝回答**。
+
+2.添加一个 IncSyncDeleteAIMessage **定时任务**，每天将会**删除由于系统错误等原因AI回复失败**，导致内容为空的记录，并且会为这些用户**恢复接口的次数**，**后续可能会选择 RabbitMQ**，将失败的消息放入消息队列，然后**确保失败的消息被消费**。
+
+3.登录加密由前端改到后端，由于前端可以被撞库，因此加密依然放到后端。**方案：**前端传输，用 HTTPS 进行密文加密，后端采用盐值+算法进行加密，数据库存密文。
+
+4.将留言页面存放在 Redis 中，**减少数据库的 IO 查询**，QPS 是原来的数百倍！
+
+**前端更新情况**
+
+1.将三个登录页面的背景图和头像改为存储在 assets 文件夹的 images 中，**主要是为使用项目的人考虑**，很多人不懂图床技术，我这边暂时将登录页面改成静态图。
+
+2.权限切换的提示优化，**在图标上面现在有登录权限切换的文字样式**，提示用户有多个登录页面可以切换。
+
+3.登录加密由前端改到后端，由于前端可以被撞库，因此加密依然放到后端。**方案**：前端传输，用 HTTPS 进行密文加密，后端采用盐值+算法进行加密，数据库存密文。
