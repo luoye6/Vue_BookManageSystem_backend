@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  */
 public class BorrowDateUtil {
     public static String [] getDateArray(LocalDateTime now){

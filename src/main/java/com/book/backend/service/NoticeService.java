@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  * @description 针对表【t_notice】的数据库操作Service
  * @createDate 2023-02-05 16:14:03
  */

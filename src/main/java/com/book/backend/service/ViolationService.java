@@ -10,7 +10,7 @@ import com.book.backend.pojo.dto.ViolationDTO;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
-* @author 赵天宇
+* @author 程序员小白条
 * @description 针对表【t_violation】的数据库操作Service
 * @createDate 2023-02-06 16:31:20
 */

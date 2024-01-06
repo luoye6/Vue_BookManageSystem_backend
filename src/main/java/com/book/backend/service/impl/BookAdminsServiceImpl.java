@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  * @description 针对表【t_book_admins】的数据库操作Service实现
  * @createDate 2023-02-04 16:55:39
  */
@@ -95,7 +95,7 @@ public class BookAdminsServiceImpl extends ServiceImpl<BookAdminsMapper, BookAdm
         if (Constant.DISABLE.equals(bookAdminOne.getStatus())) {
             return R.error("该图书管理员已被禁用");
         }
-        String password = users.getPassword();
+        String password = DigestUtils.md5DigestAsHex((SALT+users.getPassword()).getBytes());
         if (!password.equals(bookAdminOne.getPassword())) {
             result.setStatus(404);
             return R.error("用户名或密码错误");
@@ -165,7 +165,7 @@ public class BookAdminsServiceImpl extends ServiceImpl<BookAdminsMapper, BookAdm
             // 不为空，封装为DTO返回
             BeanUtils.copyProperties(pageInfo, dtoPage, "records");
             List<Violation> records = page.getRecords();
-            List<ViolationDTO> dtoList = records.stream().map((item) -> {
+            List<ViolationDTO> dtoList = records.stream().map(item -> {
                 ViolationDTO violationDTO = new ViolationDTO();
                 BeanUtils.copyProperties(item, violationDTO);
                 // 获取图书管理员id
@@ -195,7 +195,7 @@ public class BookAdminsServiceImpl extends ServiceImpl<BookAdminsMapper, BookAdm
         }
         BeanUtils.copyProperties(pageInfo, dtoPage, "records");
         List<Violation> records = pageInfo.getRecords();
-        List<ViolationDTO> dtoList = records.stream().map((item) -> {
+        List<ViolationDTO> dtoList = records.stream().map(item -> {
             ViolationDTO violationDTO = new ViolationDTO();
             BeanUtils.copyProperties(item, violationDTO);
             Integer violationAdminId = item.getViolationAdminId();

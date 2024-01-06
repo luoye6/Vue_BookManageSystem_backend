@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  *  DTO用于将管理员昵称传输
  */
 @Data

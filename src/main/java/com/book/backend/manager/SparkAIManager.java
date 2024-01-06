@@ -19,10 +19,14 @@ import java.util.concurrent.TimeUnit;
 public class SparkAIManager extends WebSocketListener {
     // 地址与鉴权信息  https://spark-api.xf-yun.com/v1.1/chat   1.5地址  domain参数为general
     // 地址与鉴权信息  https://spark-api.xf-yun.com/v2.1/chat   2.0地址  domain参数为generalv2
+    // todo 目前已经有三种版本 请根据您的模型替换 hostURL 讯飞星火官网地址：https://xinghuo.xfyun.cn/sparkapi
     public static final String hostUrl = "https://spark-api.xf-yun.com/v2.1/chat";
+    // todo 替换成你自己的 appid
     public static final String appid = "xxxxx";
-    public static final String apiSecret = "xxxxxxx";
-    public static final String apiKey = "xxxxxxxx";
+    // todo 替换成你自己的 apiSecret
+    public static final String apiSecret = "xxxxx";
+    // todo 替换成你自己的 apiKey
+    public static final String apiKey = "xxxxx";
 
     public static List<RoleContent> historyList=new ArrayList<>(); // 对话历史存储集合
 

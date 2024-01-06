@@ -34,7 +34,7 @@ knife4j:
     version: "1.0"
     license: Apache 2.0
     license-url: https://stackoverflow.com/
-    terms-of-service-url: https://abc.xiaobaitiao.club
+    terms-of-service-url: https://www.xiaobaitiao.top
     group:
       test1:
         group-name: default

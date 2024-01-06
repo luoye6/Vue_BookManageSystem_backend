@@ -4,8 +4,10 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.book.backend.common.exception.BusinessException;
 import com.book.backend.common.exception.ErrorCode;
 import com.book.backend.common.exception.ThrowUtils;
+import com.book.backend.job.cycle.IncSyncDeleteAIMessage;
 import com.book.backend.manager.GuavaRateLimiterManager;
 import com.book.backend.manager.SparkAIManager;
 import com.book.backend.pojo.*;
@@ -327,5 +329,32 @@ public class AITest {
                 "【【【【【\n" +
                 "{明确的数据分析结论、越详细越好，不要生成多余的注释}"+"\n";
         System.out.println(prompt);
+    }
+    @Test
+    public void test10(){
+        // 查询无效的数据，并进行删除操作
+        LambdaQueryWrapper<AiIntelligent> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.isNull(AiIntelligent::getAiResult).or().eq(AiIntelligent::getAiResult,"");
+        List<AiIntelligent> list = aiIntelligentService.list(queryWrapper);
+        // 先为用户恢复次数
+        list.forEach(item -> {
+            Long userId = item.getUserId();
+            UserInterfaceInfo user = userInterfaceInfoService.getById(userId);
+            synchronized (IncSyncDeleteAIMessage.class) {
+                // 用户恢复次数
+                if (user != null) {
+                    user.setLeftNum(user.getLeftNum() + 1);
+                    boolean save = userInterfaceInfoService.save(user);
+                    if (!save) {
+                        throw new BusinessException(ErrorCode.OPERATION_ERROR, "操作定时任务失败");
+                    }
+                }
+            }
+        });
+//        // 将无效的记录删除
+        boolean remove = aiIntelligentService.remove(queryWrapper);
+        if(!remove){
+            throw new BusinessException(ErrorCode.OPERATION_ERROR, "操作定时任务失败");
+        }
     }
 }

@@ -8,6 +8,19 @@ spring:
     url: jdbc:mysql://localhost:3306/bms_boot?characterEncoding=utf8&useSSL=false
     username: root
     password: hsp
+# todo 开启 redis 取消注释即可
+#  redis:
+#    host: 106.14.33.49
+#    port: 6379
+#    password: 663057
+##    database: 0
+#    lettuce:
+#      pool:
+#        max-active: 10
+#        max-idle: 10
+#        min-idle: 1
+#        time-between-eviction-runs: 10s
+
 server:
   port: 8889 #配置后端接口的端口号
   servlet: #配置后端请求的根路径  http://127.0.0.1:8889/api
@@ -18,3 +31,5 @@ jwt:
   secret: mall-jwt-test #jwt加解密使用的密钥
   expiration: 36000000 #JWT的超时时间
   tokenHead: Bearer #JWT负载中拿到的开头
+
+

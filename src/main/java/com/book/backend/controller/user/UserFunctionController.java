@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  */
 @RestController
 @RequestMapping("/user")
@@ -118,6 +118,7 @@ public class UserFunctionController {
     @GetMapping("get_commentlist")
     public R<List<CommentDTO>> getCommentList() {
         return commentService.getCommentList();
+
     }
 
     /**
@@ -132,8 +133,8 @@ public class UserFunctionController {
 
     /**
      * 调用AI模型，获取数据库中有的，并且推荐图书给用户
-     * @param aiIntelligent
-     * @return
+     * @param aiIntelligent AI实体类
+     * @return R<String>
      */
     @PostMapping("ai_intelligent")
     public R<String> aiRecommend(@RequestBody AiIntelligent aiIntelligent){

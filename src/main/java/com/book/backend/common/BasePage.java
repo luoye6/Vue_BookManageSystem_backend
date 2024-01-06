@@ -3,7 +3,7 @@ package com.book.backend.common;
 import lombok.Data;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  */
 @Data
 public class BasePage {

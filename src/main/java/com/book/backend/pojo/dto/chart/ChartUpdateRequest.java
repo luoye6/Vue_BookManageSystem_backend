@@ -11,8 +11,8 @@ import java.util.Date;
 /**
  * 更新请求
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
+ * @author <a href="https://github.com/luoye6">程序员小白条</a>
+ * 
  */
 @Data
 public class ChartUpdateRequest implements Serializable {

@@ -24,7 +24,7 @@ import org.springframework.util.DigestUtils;
 import javax.annotation.Resource;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  * @description 针对表【t_users】的数据库操作Service实现
  * @createDate 2023-02-02 16:20:02
  */
@@ -130,7 +130,8 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
         if (Constant.DISABLE.equals(user.getStatus())) {
             return R.error("账号已被禁止登录");
         }
-        String password = users.getPassword();
+
+        String password = DigestUtils.md5DigestAsHex((SALT+users.getPassword()).getBytes());
         if (!password.equals(user.getPassword())) {
             result.setStatus(404);
             return R.error("用户名或密码错误");

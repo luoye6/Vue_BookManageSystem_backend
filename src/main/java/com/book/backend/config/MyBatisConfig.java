@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  */
 @Configuration
 @MapperScan("com.blog.backend.mapper")

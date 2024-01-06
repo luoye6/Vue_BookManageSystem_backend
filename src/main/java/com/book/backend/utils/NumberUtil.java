@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 import java.util.Random;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  */
 public class NumberUtil {
     public static Integer getLibraryInt(){

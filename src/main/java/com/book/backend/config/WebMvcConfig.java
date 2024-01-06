@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -20,7 +20,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authInterceptorHandler()).excludePathPatterns("/**/login").excludePathPatterns("/doc.html");
+        registry.addInterceptor(authInterceptorHandler()).excludePathPatterns("/**/login").excludePathPatterns("/doc.html").excludePathPatterns("/**/websocket");
     }
 
     @Bean

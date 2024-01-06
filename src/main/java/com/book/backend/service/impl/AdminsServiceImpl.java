@@ -31,7 +31,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * @author 赵天宇
+ * @author 程序员小白条
  * @description 针对表【t_admins】的数据库操作Service实现
  * @createDate 2023-02-03 20:01:01
  */
@@ -111,7 +111,7 @@ public class AdminsServiceImpl extends ServiceImpl<AdminsMapper, Admins>
         if (Constant.DISABLE.equals(adminOne.getStatus())) {
             return R.error("该系统管理员已被禁用");
         }
-        String password = users.getPassword();
+        String password = DigestUtils.md5DigestAsHex((SALT+users.getPassword()).getBytes());
         if (!password.equals(adminOne.getPassword())) {
             result.setStatus(404);
             return R.error("用户名或密码错误");
