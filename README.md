@@ -52,7 +52,7 @@
 
 7）读者留言: 实现留言功能并以**弹幕形式**显示。
 
-8）**智能推荐（新）：**用户输入自己的偏好，AI 根据数据库书籍列表和用户偏好，给用户推荐书籍。
+8）**智能推荐**用户输入自己的偏好，AI 根据数据库书籍列表和用户偏好，给用户推荐书籍。
 
 ### 图书管理员功能
 
@@ -186,7 +186,7 @@ npm config set registry https://registry.npmmirror.com/
 
 ![](https://pic.yupi.icu/5563/202403041926672.png)
 
-4）导入 Maven 依赖，注意看自己的 Maven 版本是否正确，建议选择跟我一样的，3.8以上的版本，发现依赖导入很慢，是因为没有配置国内镜像，默认连接的是国外服务器，因此阿里云镜像配置可以看这篇博客。[CSDN Maven 配置教程](https://blog.csdn.net/lianghecai52171314/article/details/102625184?ops_request_misc=&request_id=&biz_id=102&utm_term=Maven 阿里云镜像配置博客&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-102625184.142^v99^pc_search_result_base5&spm=1018.2226.3001.4187)。
+4）导入 Maven 依赖，注意看自己的 Maven 版本是否正确，建议选择跟我一样的，3.8以上的版本，发现依赖导入很慢，是因为没有配置国内镜像，默认连接的是国外服务器，因此阿里云镜像配置可以看这篇博客。[CSDN Maven 配置教程](https://blog.csdn.net/lianghecai52171314/article/details/102625184?ops_request_misc=&request_id=&biz_id=102&utm_term=Maven)
 
 ![](https://pic.yupi.icu/5563/202403041926747.png)
 
