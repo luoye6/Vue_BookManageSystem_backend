@@ -9,6 +9,7 @@ import com.book.backend.pojo.dto.*;
 import com.book.backend.pojo.dto.chart.GenChartByAiRequest;
 import com.book.backend.pojo.vo.BiResponse;
 import com.book.backend.service.*;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,6 +49,7 @@ public class AdminFunctionController {
      * @return R<Page < Books>>
      */
     @PostMapping("get_booklist")
+    @ApiOperation("获取图书列表")
     public R<Page<Books>> getBookList(@RequestBody BasePage basePage) {
         return booksService.getBookList(basePage);
     }
@@ -58,6 +60,7 @@ public class AdminFunctionController {
      * @return R<BookType>
      */
     @GetMapping("get_type")
+    @ApiOperation("查询书籍类型列表")
     public R<List<BookType>> getBookTypeList() {
         return bookTypeService.getBookTypeList();
     }
@@ -68,6 +71,7 @@ public class AdminFunctionController {
      * @return R
      */
     @PostMapping("add_book")
+    @ApiOperation("添加图书")
     public R<String> addBook(@RequestBody BookDTO bookDTO) {
         return booksService.addBook(bookDTO);
     }
@@ -79,6 +83,7 @@ public class AdminFunctionController {
      * @return R
      */
     @GetMapping("delete_book/{bookId}")
+    @ApiOperation("根据图书id删除对应的图书")
     public R<String> deleteBookByBookId(@PathVariable("bookId") Integer bookId) {
         return booksService.deleteBookByBookId(bookId);
     }
@@ -90,6 +95,7 @@ public class AdminFunctionController {
      * @return R<Books>
      */
     @GetMapping("get_bookinformation/{bookId}")
+    @ApiOperation("根据图书id获得相对应的图书信息")
     public R<Books> getBookInformationByBookId(@PathVariable("bookId") Integer bookId) {
         return booksService.getBookInformationByBookId(bookId);
     }
@@ -101,6 +107,7 @@ public class AdminFunctionController {
      * @return R
      */
     @PostMapping("update_book")
+    @ApiOperation("更新图书")
     public R<String> updateBookByEditForm(@RequestBody Books books) {
         return booksService.updateBookByEditForm(books);
     }
@@ -111,6 +118,7 @@ public class AdminFunctionController {
      * @return R<List < BookType>>
      */
     @PostMapping("get_booktype_page")
+    @ApiOperation("获取书籍类别的列表")
     public R<Page<BookType>> getBookTypeListByPage(@RequestBody BasePage basePage) {
         return bookTypeService.getBookTypeListByPage(basePage);
     }
@@ -122,6 +130,7 @@ public class AdminFunctionController {
      * @return R
      */
     @PostMapping("add_booktype")
+    @ApiOperation("添加书籍类别")
     public R<String> addBookType(@RequestBody BookType bookType) {
         return bookTypeService.addBookType(bookType);
     }
@@ -133,6 +142,7 @@ public class AdminFunctionController {
      * @return R
      */
     @GetMapping("get_booktype/{typeId}")
+    @ApiOperation("获取书籍类别信息")
     public R<BookType> getBookTypeByTypeId(@PathVariable("typeId") Integer typeId) {
         return bookTypeService.getBookTypeByTypeId(typeId);
     }
@@ -144,6 +154,7 @@ public class AdminFunctionController {
      * @return R
      */
     @PostMapping("update_booktype")
+    @ApiOperation("更新书籍类别")
     public R<String> updateBookType(@RequestBody BookType bookType) {
         return bookTypeService.updateBookType(bookType);
     }
@@ -155,6 +166,7 @@ public class AdminFunctionController {
      * @return R
      */
     @GetMapping("delete_booktype/{typeId}")
+    @ApiOperation("删除书籍类别")
     public R<String> deleteBookTypeByTypeId(@PathVariable("typeId") Integer typeId) {
         return bookTypeService.deleteBookTypeByTypeId(typeId);
     }
@@ -166,6 +178,7 @@ public class AdminFunctionController {
      * @return R<Page < Users>>
      */
     @PostMapping("get_statementlist")
+    @ApiOperation("获取借阅证列表")
     public R<Page<Users>> getStatementList(@RequestBody BasePage basePage) {
         return usersService.getStatementList(basePage);
     }
@@ -177,6 +190,7 @@ public class AdminFunctionController {
      * @return R<String>
      */
     @PostMapping("add_statement")
+    @ApiOperation("添加借阅证")
     public R<String> addStatement(@RequestBody UsersDTO usersDTO) {
         return adminsService.addRule(usersDTO);
     }
@@ -188,6 +202,7 @@ public class AdminFunctionController {
      * @return R<UsersDTO>
      */
     @GetMapping("get_statement/{userId}")
+    @ApiOperation("获取用户信息用于回显借阅证")
     public R<UsersDTO> getStatementByUserId(@PathVariable("userId") Integer userId) {
         return usersService.getStatementByUserId(userId);
     }
@@ -199,6 +214,7 @@ public class AdminFunctionController {
      * @return R
      */
     @PostMapping("update_statement")
+    @ApiOperation("修改借阅证信息")
     public R<String> updateStatement(@RequestBody UsersDTO usersDTO) {
         return usersService.updateStatement(usersDTO);
     }
@@ -210,6 +226,7 @@ public class AdminFunctionController {
      * @return R
      */
     @DeleteMapping("delete_statement/{userId}")
+    @ApiOperation("删除借阅证信息")
     public R<String> deleteStatementByUserId(@PathVariable("userId") Integer userId) {
         return usersService.deleteStatementByUserId(userId);
     }
@@ -221,6 +238,7 @@ public class AdminFunctionController {
      * @return R<Page < BookRule>>
      */
     @PostMapping("get_rulelist_page")
+    @ApiOperation("获取规则列表")
     public R<Page<BookRule>> getRuleListByPage(@RequestBody BasePage basePage) {
         return bookRuleService.getRuleListByPage(basePage);
     }
@@ -232,6 +250,7 @@ public class AdminFunctionController {
      * @return R
      */
     @PostMapping("add_rule")
+    @ApiOperation("添加规则")
     public R<String> addRule(@RequestBody BookRule bookRule) {
         return bookRuleService.addRule(bookRule);
     }
@@ -243,6 +262,7 @@ public class AdminFunctionController {
      * @return R<BookRule>
      */
     @GetMapping("get_rule_ruleid/{ruleId}")
+    @ApiOperation("根据规则编号查询规则")
     public R<BookRuleDTO> getRuleByRuleId(@PathVariable("ruleId") Integer ruleId) {
         return bookRuleService.getRuleByRuleId(ruleId);
     }
@@ -254,6 +274,7 @@ public class AdminFunctionController {
      * @return R
      */
     @PutMapping("update_rule")
+    @ApiOperation("修改规则")
     public R<String> updateRule(@RequestBody BookRuleDTO bookRuleDTO) {
         return bookRuleService.updateRule(bookRuleDTO);
     }
@@ -265,6 +286,7 @@ public class AdminFunctionController {
      * @return R
      */
     @DeleteMapping("delete_rule/{ruleId}")
+    @ApiOperation("删除规则")
     public R<String> deleteRule(@PathVariable("ruleId") Integer ruleId) {
         return bookRuleService.deleteRule(ruleId);
     }
@@ -276,6 +298,7 @@ public class AdminFunctionController {
      * @return R<Page < BookAdmins>>
      */
     @PostMapping("get_bookadminlist")
+    @ApiOperation("获取图书管理员的列表")
     public R<Page<BookAdmins>> getBookAdminListByPage(@RequestBody BasePage basePage) {
         return bookAdminsService.getBookAdminListByPage(basePage);
     }
@@ -287,6 +310,7 @@ public class AdminFunctionController {
      * @return R<String>
      */
     @PostMapping("add_bookadmin")
+    @ApiOperation("添加图书管理员")
     public R<String> addBookAdmin(@RequestBody BookAdmins bookAdmins) {
         return bookAdminsService.addBookAdmin(bookAdmins);
     }
@@ -298,6 +322,7 @@ public class AdminFunctionController {
      * @return R<BookAdmins>
      */
     @GetMapping("get_bookadmin/{bookAdminId}")
+    @ApiOperation("获取图书管理员信息")
     public R<BookAdmins> getBookAdminById(@PathVariable("bookAdminId") Integer bookAdminId) {
         return bookAdminsService.getBookAdminById(bookAdminId);
     }
@@ -309,6 +334,7 @@ public class AdminFunctionController {
      * @return R<String>
      */
     @DeleteMapping("delete_bookadmin/{bookAdminId}")
+    @ApiOperation("删除图书管理员")
     public R<String> deleteBookAdminById(@PathVariable("bookAdminId") Integer bookAdminId) {
         return bookAdminsService.deleteBookAdminById(bookAdminId);
     }
@@ -320,6 +346,7 @@ public class AdminFunctionController {
      * @return R<String>
      */
     @PutMapping("update_bookadmin")
+    @ApiOperation("修改图书管理员")
     public R<String> updateBookAdmin(@RequestBody BookAdmins bookAdmins) {
         return bookAdminsService.updateBookAdmin(bookAdmins);
     }
@@ -330,6 +357,7 @@ public class AdminFunctionController {
      * @return R<BorrowData>
      */
     @GetMapping("get_borrowdata")
+    @ApiOperation("获取借阅量")
     public R<BorrowData> getBorrowDate() {
         return violationService.getBorrowDate();
     }
@@ -340,6 +368,7 @@ public class AdminFunctionController {
      * @return R<List < BorrowTypeDTO>>
      */
     @GetMapping("get_borrowtype_statistics")
+    @ApiOperation("获取借书分类统计情况")
     public R<List<BorrowTypeDTO>> getBorrowTypeStatistic() {
         return booksService.getBorrowTypeStatistic();
     }
@@ -351,6 +380,7 @@ public class AdminFunctionController {
      * @return R<String>
      */
     @DeleteMapping("delete_book_batch")
+    @ApiOperation("批量删除图书")
     public R<String> deleteBookByBatch(@RequestBody List<Books> booksList) {
         return booksService.deleteBookByBatch(booksList);
 
@@ -364,6 +394,7 @@ public class AdminFunctionController {
      * @throws IOException IO异常
      */
     @PostMapping("/updown")
+    @ApiOperation("从Excel批量导入图书")
     public R<String> upload(@RequestParam("files") MultipartFile file) throws IOException {
         return adminsService.upload(file);
     }
@@ -375,6 +406,7 @@ public class AdminFunctionController {
      * @return R<BiResponse>
      */
     @PostMapping("/gen")
+    @ApiOperation("根据用户输入信息，生成图表")
     public R<BiResponse> genChartByAi(@RequestPart("file") MultipartFile multipartFile,
                                                  GenChartByAiRequest genChartByAiRequest) {
         return chartService.genChartByAi(multipartFile,genChartByAiRequest);

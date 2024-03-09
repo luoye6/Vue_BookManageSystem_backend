@@ -3,6 +3,7 @@ package com.book.backend.controller.admin;
 import com.book.backend.common.R;
 import com.book.backend.pojo.Admins;
 import com.book.backend.service.AdminsService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class AdminLoginController {
      * @return 返回R通用数据
      */
     @PostMapping("/login")
+    @ApiOperation("管理员登录")
     public R login(@RequestBody Admins users){
         return adminsService.login(users);
     }
@@ -35,6 +37,7 @@ public class AdminLoginController {
      * @return R<Admins>
      */
     @PostMapping ("/getData")
+    @ApiOperation("获取管理员数据")
     public R<Admins> getUserData(@RequestBody Admins admin){
         return adminsService.getUserData(admin);
     }

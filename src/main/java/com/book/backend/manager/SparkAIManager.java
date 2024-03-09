@@ -21,11 +21,11 @@ public class SparkAIManager extends WebSocketListener {
     // 地址与鉴权信息  https://spark-api.xf-yun.com/v2.1/chat   2.0地址  domain参数为generalv2
     // todo 目前已经有三种版本 请根据您的模型替换 hostURL 讯飞星火官网地址：https://xinghuo.xfyun.cn/sparkapi
     public static final String hostUrl = "https://spark-api.xf-yun.com/v2.1/chat";
-    // todo 替换成你自己的 appid
+    // todo 替换成你自己的 appid 图书管理系统 1.1 版本 1.2版本请找 AiIntelligentServiceImpl 替换代码块即可
     public static final String appid = "xxxxx";
-    // todo 替换成你自己的 apiSecret
+    // todo 替换成你自己的 apiSecret 图书管理系统 1.1 版本
     public static final String apiSecret = "xxxxx";
-    // todo 替换成你自己的 apiKey
+    // todo 替换成你自己的 apiKey 图书管理系统 1.1 版本
     public static final String apiKey = "xxxxx";
 
     public static List<RoleContent> historyList=new ArrayList<>(); // 对话历史存储集合

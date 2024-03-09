@@ -7,6 +7,7 @@ import com.book.backend.pojo.*;
 import com.book.backend.pojo.dto.CommentDTO;
 import com.book.backend.pojo.dto.ViolationDTO;
 import com.book.backend.service.*;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -43,6 +44,7 @@ public class UserFunctionController {
      * @return R<Page < Books>>
      */
     @PostMapping("/search_book_page")
+    @ApiOperation("图书查询 分页和条件查询")
     public R<Page<Books>> searchBookPage(@RequestBody BasePage basePage) {
         return booksService.searchBookPage(basePage);
     }
@@ -53,6 +55,7 @@ public class UserFunctionController {
      * @return R<List < BookRule>>
      */
     @GetMapping("get_rulelist")
+    @ApiOperation("读者规则查询")
     public R<List<BookRule>> getRuleList() {
         return bookRuleService.getRuleList();
     }
@@ -63,6 +66,7 @@ public class UserFunctionController {
      * @return R<List < Notice>>
      */
     @GetMapping("get_noticelist")
+    @ApiOperation("查询公告信息")
     public R<List<Notice>> getNoticeList() {
         return noticeService.getNoticeList();
     }
@@ -74,6 +78,7 @@ public class UserFunctionController {
      * @return R<Users>
      */
     @GetMapping("get_information/{userId}")
+    @ApiOperation("查询个人用户")
     public R<Users> getUserByUserId(@PathVariable("userId") Integer userId) {
         return usersService.getUserByUserId(userId);
     }
@@ -84,6 +89,7 @@ public class UserFunctionController {
      * @return R
      */
     @PostMapping("update_password")
+    @ApiOperation("修改密码")
     public R<String> updatePassword(@RequestBody Users users) {
         return usersService.updatePassword(users);
     }
@@ -95,6 +101,7 @@ public class UserFunctionController {
      * @return R<Page < BooksBorrow>>
      */
     @PostMapping("get_bookborrow")
+    @ApiOperation("借阅信息查询")
     public R<Page<BooksBorrow>> getBookBorrowPage(@RequestBody BasePage basePage) {
         return booksBorrowService.getBookBorrowPage(basePage);
     }
@@ -106,6 +113,7 @@ public class UserFunctionController {
      * @return R<Page < ViolationDTO>>
      */
     @PostMapping("get_violation")
+    @ApiOperation("查询违章信息")
     public R<Page<ViolationDTO>> getViolationListByPage(@RequestBody BasePage basePage) {
         return violationService.getViolationListByPage(basePage);
     }
@@ -116,6 +124,7 @@ public class UserFunctionController {
      * @return R<Comment>
      */
     @GetMapping("get_commentlist")
+    @ApiOperation("获取弹幕列表")
     public R<List<CommentDTO>> getCommentList() {
         return commentService.getCommentList();
 
@@ -127,6 +136,7 @@ public class UserFunctionController {
      * @return R
      */
     @PostMapping("add_comment")
+    @ApiOperation("添加弹幕")
     public R<String> addComment(@RequestBody CommentDTO commentDTO) {
         return commentService.addComment(commentDTO);
     }
@@ -137,10 +147,18 @@ public class UserFunctionController {
      * @return R<String>
      */
     @PostMapping("ai_intelligent")
+    @ApiOperation("推荐图书")
     public R<String> aiRecommend(@RequestBody AiIntelligent aiIntelligent){
         return aiIntelligentService.getGenResult(aiIntelligent);
     }
+
+    /**
+     * 根据用户ID 获取该用户和AI聊天的最近的五条消息
+     * @param userId 用户id
+     * @return R<List<AiIntelligent>>
+     */
     @GetMapping("ai_list_information/{userId}")
+    @ApiOperation("获取该用户和AI聊天的最近的五条消息")
     public R<List<AiIntelligent>> getAiInformationByUserId(@PathVariable("userId") Long userId){
         return aiIntelligentService.getAiInformationByUserId(userId);
     }

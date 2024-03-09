@@ -7,6 +7,7 @@ import com.book.backend.config.HttpSessionConfigurator;
 import com.book.backend.pojo.Chat;
 import com.book.backend.pojo.Users;
 import com.book.backend.pojo.dto.chat.MessageRequest;
+import com.book.backend.pojo.vo.ChatVo;
 import com.book.backend.service.ChatService;
 import com.book.backend.service.UsersService;
 import com.google.gson.Gson;
@@ -15,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -164,7 +167,8 @@ public class WebSocket {
     }
 
     @OnMessage
-    public void onMessage(String message, @PathParam("userId") String userId) {
+    public void onMessage(String message,@PathParam("userId") String userId) {
+
         if ("PING".equals(message)) {
             sendOneMessage(userId, "pong");
             log.error("心跳包，发送给={},在线:{}人", userId, getOnlineCount());

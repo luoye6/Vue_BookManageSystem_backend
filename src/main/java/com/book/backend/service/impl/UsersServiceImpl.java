@@ -94,10 +94,11 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
         String saltPassword = SALT+password;
         String md5Password = DigestUtils.md5DigestAsHex(saltPassword.getBytes());
         userOne.setPassword(md5Password);
-        boolean update = this.update(userOne, queryWrapper);
-        if (!update) {
-            return R.error("更改密码失败");
-        }
+        // todo 取消注释即可成功修改密码 我这边防止有人恶意修改默认用户导致其他游客访问不了，因此取消修改密码的逻辑
+//        boolean update = this.update(userOne, queryWrapper);
+//        if (!update) {
+//            return R.error("更改密码失败");
+//        }
         return R.success(null, "更改密码成功");
     }
 

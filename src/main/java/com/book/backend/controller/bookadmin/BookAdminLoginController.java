@@ -3,6 +3,7 @@ package com.book.backend.controller.bookadmin;
 import com.book.backend.common.R;
 import com.book.backend.pojo.BookAdmins;
 import com.book.backend.service.BookAdminsService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ public class BookAdminLoginController {
      * @return 返回R通用数据
      */
     @PostMapping("/login")
+    @ApiOperation("图书管理员登录")
     public R login(@RequestBody BookAdmins users) {
         return bookAdminsService.login(users);
     }
@@ -38,6 +40,7 @@ public class BookAdminLoginController {
      * @return R<BookAdmins>
      */
     @PostMapping("/getData")
+    @ApiOperation("获取图书管理员数据")
     public R<BookAdmins> getUserData(@RequestBody BookAdmins bookAdmins) {
       return bookAdminsService.getUserData(bookAdmins);
     }
