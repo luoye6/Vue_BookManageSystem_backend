@@ -20,11 +20,20 @@ Language：**[English](README_en.md)**| **[中文](README.md).**
 
 [![star](https://gitee.com/falle22222n-leaves/vue_-book-manage-system/badge/star.svg?theme=dark)](https://gitee.com/falle22222n-leaves/vue_-book-manage-system)  [![gitee](https://badgen.net/badge/gitee/falle22222n-leaves/red)](https://gitee.com/falle22222n-leaves)  [![github](https://badgen.net/badge/github/github?icon)](https://github.com/luoye6)
 
+## 黑马程序员推荐作品(doge)
+![](https://pic.yupi.icu/5563/202503251541861.png)
+
 ## ☀️个人介绍
 
 ![](https://pic.yupi.icu/5563/202403021406388.png)
 
 ![](https://pic.yupi.icu/5563/202403021406360.png)
+
+## 🐼新项目上线（开新坑）
+智能 AI 旅游推荐平台上线！欢迎收藏和 Fork，技术栈 Vue3+SpringBoot2+TypeScript，UI 设计更加美观，且可以自定义主题颜色，支持讯飞星火 AI 大模型和可添加协同过滤算法。
++ [项目在线演示地址](https://www.xiaobaitiao.icu)
++ [项目前端地址](https://gitee.com/falle22222n-leaves/vue3_tourism_frontend)
++ [项目后端地址](https://gitee.com/falle22222n-leaves/vue3_tourism_backend)
 
 ## ☀️项目介绍
 
@@ -682,6 +691,12 @@ npm config set registry https://registry.npmmirror.com/
 ![](https://pic.yupi.icu/5563/202403092029471.png)
 
 ![](https://pic.yupi.icu/5563/202403092029399.png)
+
+
+## 🐼远程部署和项目讲解服务
+
+远程部署服务需自己先下载向日葵远程控制软件，然后加 WX 或者 QQ 即可（**付费服务**），远程部署用于给完全不懂的小白，项目讲解服务用于**课设、实训、毕设语音答辩服务**，想减省时间，提高通过率，直接加我即可，可以**定制背景图片和整体的样式功能**，**降重服务**也可私我！
+
 
 ## 🐷其他
 
